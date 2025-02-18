@@ -9,7 +9,8 @@ class NewsAPISource implements NewsSourceInterface
     public function __construct(
         private readonly string $baseUrl,
         private readonly string $apiKey
-    ) {}
+    ) {
+    }
 
     public function fetchArticles(): array
     {
@@ -20,7 +21,24 @@ class NewsAPISource implements NewsSourceInterface
             'dateStart' => today()->format('Y-m-d'),
         ]);
 
-        return $response->json()['articles']['results'] ?? [];
+        return collect($response->json()['articles']['results'] ?? [])
+        ->map(function ($article) {
+            return $this->mapResponse($article);
+        })->all();
+    }
+
+    private function mapResponse($article)
+    {
+        return [
+            'url' => $article['url'],
+            'title' => $article['title'],
+            'description' => null,
+            'content' => $article['body'] ?? null,
+            'author' => $article['authors'][0]['name'] ?? null,
+            'image_url' => $article['image'] ?? null,
+            'published_at' => $article['dateTimePub'],
+            'external_id' => $article['uri'] ?? null,
+        ];
     }
 
     public function getSourceCode(): string

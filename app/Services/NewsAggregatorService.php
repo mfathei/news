@@ -25,12 +25,12 @@ class NewsAggregatorService
                         ],
                         [
                             'title' => $article['title'],
-                            'description' => null,
-                            'content' => $article['body'] ?? null,
-                            'author' => $article['authors'][0]['name'] ?? null,
-                            'image_url' => $article['image'] ?? null,
-                            'published_at' => $article['dateTimePub'],
-                            'external_id' => $article['uri'] ?? null,
+                            'description' => $article['description'] ?? null,
+                            'content' => $article['content'] ?? null,
+                            'author' => $article['author'] ?? null,
+                            'image_url' => $article['image_url'] ?? null,
+                            'published_at' => $article['published_at'],
+                            'external_id' => $article['external_id'] ?? null,
                         ]
                     );
                 }

@@ -39,4 +39,8 @@ return [
         'api_key' => env('NEWS_API_KEY'),
     ],
 
+    'newsapi-org' => [
+        'api_key' => env('NEWSAPI_ORG_API_KEY'),
+    ],
+
 ];

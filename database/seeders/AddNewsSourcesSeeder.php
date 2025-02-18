@@ -20,6 +20,13 @@ class AddNewsSourcesSeeder extends Seeder
                 'base_url' => 'https://eventregistry.org/api/v1/article/getArticles',
                 'is_active' => true,
             ],
+            [
+                'name' => 'News API ORG',
+                'code' => 'newsapi-org',
+                'api_key' => config('services.newsapi-org.api_key'),
+                'base_url' => 'https://newsapi.org/v2/everything',
+                'is_active' => true,
+            ],
         ]);
     }
 }
