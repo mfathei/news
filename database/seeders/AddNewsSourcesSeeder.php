@@ -27,6 +27,13 @@ class AddNewsSourcesSeeder extends Seeder
                 'base_url' => 'https://newsapi.org/v2/everything',
                 'is_active' => true,
             ],
+            [
+                'name' => 'Guardian',
+                'code' => 'guardianapis',
+                'api_key' => config('services.guardianapis.api_key'),
+                'base_url' => 'https://content.guardianapis.com/search',
+                'is_active' => true,
+            ],
         ]);
     }
 }

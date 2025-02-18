@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Source;
+use App\Services\News\GuardianSource;
 use App\Services\News\NewsAPIORGSource;
 use App\Services\NewsAggregatorService;
 use App\Services\News\NewsAPISource;
@@ -23,7 +24,7 @@ class FetchNewsCommand extends Command
             $newsSource = match ($source->code) {
                 'newsapi' => new NewsAPISource($source->base_url, $source->api_key),
                 'newsapi-org' => new NewsAPIORGSource($source->base_url, $source->api_key),
-                // Add other sources here
+                'guardianapis' => new GuardianSource($source->base_url, $source->api_key),
                 default => throw new \RuntimeException("Unknown source: {$source->code}"),
             };
 

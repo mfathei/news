@@ -43,4 +43,7 @@ return [
         'api_key' => env('NEWSAPI_ORG_API_KEY'),
     ],
 
+    'guardianapis' => [
+        'api_key' => env('GUARDIAN_API_KEY'),
+    ],
 ];
